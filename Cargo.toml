@@ -1,0 +1,16 @@
+[package]
+name = "post"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+strip = true
+opt-level = "s"
+lto = true
+codegen-units = 1
+
+[dependencies]
+tokio = { version = "1.43.0", features = ["full", "time"] }
+clap = { version = "4.5.26", features = ["derive"] }
+anyhow = "1.0.95"
+walkdir = "2.5.0"
