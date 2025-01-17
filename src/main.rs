@@ -183,6 +183,7 @@ async fn directory_send(dir: String, mut stream: TcpStream) -> Result<(), Error>
     }
     // send 0 to indicate end of transfer
     write_u64(&mut stream, 0).await?;
+    println!("DONE");
     Ok(())
 }
 
@@ -190,6 +191,7 @@ async fn directory_receive(dir: String, mut stream: TcpStream) -> Result<(), Err
     loop {
         let has_next = save_file(&dir, &mut stream).await?;
         if !has_next {
+            println!("DONE");
             break;
         }
     }
